@@ -1,15 +1,9 @@
-// ChartCard.ts
-import { Chart, ChartType, registerables } from "chart.js";
-Chart.register(...registerables);
-
 export interface ChartCardProps {
   title: string;
   value: number | string;
   unit?: string;
   icon?: string;
   background?: string;
-  chartType?: ChartType;
-  chartData?: number[];
 }
 
 export function createChartCard({
@@ -17,8 +11,8 @@ export function createChartCard({
   value,
   unit = '',
   icon = "📊",
-  background = '#fff',
-  }: ChartCardProps): HTMLElement {
+  background = '#fff'
+}: ChartCardProps): HTMLElement {
   const card = document.createElement("div");
   card.className = "chart-card";
   card.style.background = background;
@@ -30,11 +24,9 @@ export function createChartCard({
     </div>
     <div class="chart-value">${value} ${unit}</div>
     <div class="chart-area-wrapper">
-      <canvas id="chart-${title}" class="chart-area"></canvas>
+      <canvas class="chart-area"></canvas>
     </div>
   `;
 
-    return card;
+  return card;
 }
-
-
